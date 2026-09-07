@@ -140,8 +140,8 @@
     display: grid; place-content: center; gap: 4px; text-align: center; padding: 24px;
     box-shadow: 0 10px 26px rgba(6, 16, 45, .35);
   }
-  .frame .slot { font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: #cdeaf9; font-weight: 700; }
-  .frame .what { color: #fff; font-size: 15px; font-weight: 500; }
+  .oval .frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .oval .frame { padding: 0; overflow: hidden; }
 
   /* ---- üçlü bilgi kutuları ---- */
   .infos { background: var(--navy); }
@@ -169,8 +169,15 @@
     background: linear-gradient(145deg, var(--cyan-soft), var(--blue-soft));
     display: grid; place-content: center; gap: 5px; text-align: center; padding: 20px;
   }
-  .dish-card .photo .slot { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(--blue); }
-  .dish-card .photo .hint { font-size: 14px; color: var(--ink-soft); }
+  .dish-card .photo { padding: 0; overflow: hidden; }
+  .dish-card .photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
+  .dish-card:hover .photo img { transform: scale(1.04); }
+
+  /* galeri seridi */
+  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .gallery figure { margin: 0; border: 1px solid var(--line); overflow: hidden; background: var(--page); }
+  .gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+  .gallery figcaption { padding: 11px 14px; font-size: 15px; font-weight: 600; color: var(--navy); }
   .dish-card .caption { background: var(--blue); color: #fff; padding: 13px 16px; font-size: 17px; font-weight: 600; }
 
   /* menü listesi */
@@ -253,6 +260,7 @@
     <nav class="menu">
       <a class="active" href="#">Ana Sayfa</a>
       <a href="#lezzetler">Lezzetler</a>
+      <a href="#galeri">Galeri</a>
       <a href="#menu">Menü</a>
       <a href="#kurumsal">Kurumsal</a>
       <a href="#iletisim">İletişim</a>
@@ -271,16 +279,16 @@
   <div class="wrap">
     <div class="ovals">
       <div class="oval">
-        <div class="label">Tezgâh</div>
-        <div class="frame"><span class="slot">Fotoğraf 01</span><span class="what">Günün balığı, buz üstünde</span></div>
+        <div class="label">Mekânımız</div>
+        <div class="frame"><img src="foto/dis-cephe.jpg" alt="Tuzla Balık Evi dış cephe ve tabela" loading="lazy"></div>
       </div>
       <div class="oval">
-        <div class="label">Mangal</div>
-        <div class="frame"><span class="slot">Fotoğraf 02</span><span class="what">Izgara başında ustamız</span></div>
+        <div class="label">Izgara</div>
+        <div class="frame"><img src="foto/karisik-izgara.jpg" alt="Karışık ızgara balık tabağı" loading="lazy"></div>
       </div>
       <div class="oval">
-        <div class="label">Salon</div>
-        <div class="frame"><span class="slot">Fotoğraf 03</span><span class="what">Salon ve deniz manzarası</span></div>
+        <div class="label">Güveç</div>
+        <div class="frame"><img src="foto/karides-guvec.jpg" alt="Taş güveçte karides" loading="lazy"></div>
       </div>
     </div>
   </div>
@@ -311,26 +319,49 @@
     </div>
     <div class="dishes">
       <div class="dish-card">
-        <div class="photo"><span class="slot">Fotoğraf alanı</span><span class="hint">Tabak fotoğrafı, üstten çekim</span></div>
-        <div class="caption">Karadeniz Somonu Izgara</div>
+        <div class="photo"><img src="foto/karides-guvec.jpg" alt="Taş güveçte karides, yanında mısır ekmeği ve salata" loading="lazy"></div>
+        <div class="caption">Karides Güveç</div>
       </div>
       <div class="dish-card">
-        <div class="photo"><span class="slot">Fotoğraf alanı</span><span class="hint">Tabak fotoğrafı, üstten çekim</span></div>
-        <div class="caption">Kalamar Sote</div>
+        <div class="photo"><img src="foto/guvecte-sote.jpg" alt="Güveçte balık sote" loading="lazy"></div>
+        <div class="caption">Güveçte Balık Sote</div>
       </div>
       <div class="dish-card">
-        <div class="photo"><span class="slot">Fotoğraf alanı</span><span class="hint">Tabak fotoğrafı, üstten çekim</span></div>
-        <div class="caption">Levrek Marine</div>
+        <div class="photo"><img src="foto/karisik-izgara.jpg" alt="Karışık ızgara balık tabağı" loading="lazy"></div>
+        <div class="caption">Karışık Izgara Tabağı</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="alt" id="menu">
+<section class="alt" id="galeri">
+  <div class="wrap">
+    <div class="head">
+      <h2>Sofradan</h2>
+      <p>Tabaklarımızdan birkaç kare.</p>
+    </div>
+    <div class="gallery">
+      <figure>
+        <img src="foto/balik-sote.jpg" alt="Balık sote, biber ve havuçla" loading="lazy">
+        <figcaption>Balık Sote</figcaption>
+      </figure>
+      <figure>
+        <img src="foto/izgara-fileto.jpg" alt="Izgara balık fileto tabağı" loading="lazy">
+        <figcaption>Izgara Fileto</figcaption>
+      </figure>
+      <figure>
+        <img src="foto/dis-cephe.jpg" alt="Tuzla Balık Evi girişi" loading="lazy">
+        <figcaption>Mekânımız</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
   <div class="wrap">
     <div class="head">
       <h2>Menü</h2>
-      <p>Örnek yerleşim — gerçek kalemler ve fiyatlar işletmeden alınıp buraya girilecek.</p>
+      <p>Fiyatlar işletmeden alınıp buraya girilecek; menü tek yerden güncellenir.</p>
     </div>
     <div class="menu-cols">
       <div>
@@ -365,7 +396,7 @@
   </div>
 </section>
 
-<section id="kurumsal">
+<section class="alt" id="kurumsal">
   <div class="wrap">
     <div class="head">
       <h2>Kurumsal Öğle Yemeği</h2>
@@ -388,7 +419,7 @@
   </div>
 </section>
 
-<section class="alt" id="iletisim">
+<section id="iletisim">
   <div class="wrap">
     <div class="head">
       <h2>İletişim</h2>
@@ -424,7 +455,7 @@
     <p><strong>Tuzla Balık Evi</strong> · Postane Mah. Cumhuriyet Cd. No:23, Tuzla / İstanbul · 0216 447 25 48 · Her gün 09.00 – 23.00</p>
     <p class="demo-note">
       Bu sayfa <strong>örnek (demo) çalışmadır</strong>; Tuzla Balık Evi tarafından yayımlanmamıştır, resmî web sitesi değildir.
-      Fotoğraf alanları ve menü kalemleri yerleşimi göstermek içindir, fiyat bilgisi içermez.
+      Fotoğraflar işletmenin kendi paylaşımlarından alınmıştır; menüdeki fiyat alanları boştur.
       Telefon, adres ve çalışma saati bilgisi herkese açık kaynaklardan alınmıştır.
     </p>
   </div>
