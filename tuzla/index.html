@@ -44,7 +44,7 @@
   .wa-btn:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
   .wa-btn svg { width: 19px; height: 19px; fill: currentColor; flex: none; }
 
-  .hero .wa-btn { font-size: 17px; padding: 15px 30px; margin-bottom: 34px; }
+  .hero .wa-btn { font-size: 17px; padding: 15px 30px; }
   .hero .wa-btn svg { width: 22px; height: 22px; }
 
   /* sağ alt köşede sabit baloncuk (masaüstü) */
@@ -103,36 +103,47 @@
 
   /* ---- kapak ---- */
   .hero {
+    position: relative; isolation: isolate;
+    padding: clamp(70px, 12vw, 130px) 0 clamp(60px, 10vw, 110px);
+    text-align: center; overflow: hidden;
+    background: var(--navy);
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: -2;
+    background: url("foto/kolaj.jpg") center center / cover no-repeat;
+  }
+  .hero::after {
+    /* mavi perde: fotograf gorunur kalsin ama yazi okunsun */
+    content: ""; position: absolute; inset: 0; z-index: -1;
     background:
-      radial-gradient(120% 120% at 50% -25%, #6d97e8 0%, transparent 58%),
-      linear-gradient(180deg, #5182db 0%, var(--blue) 55%, var(--navy) 100%);
-    padding: 44px 0 0; text-align: center; overflow: hidden;
+      linear-gradient(180deg, rgba(36, 66, 143, .80) 0%, rgba(28, 54, 124, .76) 45%, rgba(17, 35, 88, .90) 100%);
   }
   .hero h1 {
     margin: 0 0 6px; font-family: "Baloo 2", cursive; font-style: italic; font-weight: 800;
     font-size: clamp(38px, 8vw, 84px); line-height: 1.04; overflow-wrap: break-word; color: var(--cyan);
     -webkit-text-stroke: 2px #fff; paint-order: stroke fill;
-    text-shadow: 0 6px 0 rgba(10, 20, 54, .35);
+    text-shadow: 0 8px 24px rgba(6, 16, 45, .55);
   }
   .hero .slogan {
     font-family: "Baloo 2", cursive; font-style: italic; font-weight: 600;
     font-size: clamp(18px, 3vw, 28px); color: #fff; margin: 0 0 14px;
-    text-shadow: 0 2px 0 rgba(10, 20, 54, .25);
+    text-shadow: 0 2px 12px rgba(6, 16, 45, .6);
   }
-  .hero .sub { color: #d7e6fa; font-size: clamp(15px, 2.2vw, 19px); margin: 0 auto 34px; max-width: 52ch; }
+  .hero .sub {
+    color: #e8f1ff; font-size: clamp(15px, 2.2vw, 19px); margin: 0 auto 30px; max-width: 52ch;
+    text-shadow: 0 2px 10px rgba(6, 16, 45, .55);
+  }
 
   /* oval fotoğraf çerçeveleri */
-  .ovals { display: flex; flex-wrap: wrap; justify-content: center; gap: 26px; padding-bottom: 40px; }
-  .oval { width: min(280px, 78vw); }
+  .ovals { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+  .oval { width: min(290px, 80vw); text-align: center; }
   .oval .label {
-    font-family: "Baloo 2", cursive; font-style: italic; font-weight: 800; font-size: 27px;
-    color: var(--cyan); -webkit-text-stroke: 1.5px #fff; paint-order: stroke fill; margin-bottom: 10px;
+    font-family: "Baloo 2", cursive; font-style: italic; font-weight: 800; font-size: 25px;
+    color: var(--blue); margin-top: 12px;
   }
   .oval .frame {
-    aspect-ratio: 1 / .86; border-radius: 50%; border: 5px solid #fff;
-    background: linear-gradient(150deg, rgba(98,205,242,.45), rgba(63,106,209,.5));
-    display: grid; place-content: center; gap: 4px; text-align: center; padding: 24px;
-    box-shadow: 0 10px 26px rgba(6, 16, 45, .35);
+    aspect-ratio: 1 / .88; border-radius: 50%; border: 5px solid #fff;
+    overflow: hidden; box-shadow: 0 10px 26px rgba(20, 40, 96, .22);
   }
   .oval .frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .oval .frame { padding: 0; overflow: hidden; }
@@ -254,6 +265,7 @@
     <nav class="menu">
       <a class="active" href="#">Ana Sayfa</a>
       <a href="#lezzetler">Lezzetler</a>
+      <a href="#one-cikanlar">Öne Çıkanlar</a>
       <a href="#galeri">Galeri</a>
       <a href="#menu">Menü</a>
       <a href="#kurumsal">Kurumsal</a>
@@ -269,22 +281,6 @@
     <p class="slogan">Tuzla'nın balık sofrası</p>
     <p class="sub">Sabah tezgâhtan gelen günün balığı, mangalda pişer. Alkolsüz servis, aile sofrası, her gün 09.00 – 23.00.</p>
     <a class="wa-btn" href="https://wa.me/902164472548?text=Merhaba%2C%20rezervasyon%20yapmak%20istiyorum." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4C8.7 21.5 10.3 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6S20.4 7.4 20.4 12 16.6 20.2 12 20.2z"/></svg>WhatsApp'tan Rezervasyon</a>
-  </div>
-  <div class="wrap">
-    <div class="ovals">
-      <div class="oval">
-        <div class="label">Mekânımız</div>
-        <div class="frame"><img src="foto/dis-cephe.jpg" alt="Tuzla Balık Evi dış cephe ve tabela" loading="lazy"></div>
-      </div>
-      <div class="oval">
-        <div class="label">Izgara</div>
-        <div class="frame"><img src="foto/karisik-izgara.jpg" alt="Karışık ızgara balık tabağı" loading="lazy"></div>
-      </div>
-      <div class="oval">
-        <div class="label">Güveç</div>
-        <div class="frame"><img src="foto/karides-guvec.jpg" alt="Taş güveçte karides" loading="lazy"></div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -305,7 +301,30 @@
   </div>
 </div>
 
-<section id="lezzetler">
+<section id="one-cikanlar">
+  <div class="wrap">
+    <div class="head">
+      <h2>Öne Çıkanlar</h2>
+      <p>Masaya en çok gelen üç tabak.</p>
+    </div>
+    <div class="ovals">
+      <div class="oval">
+        <div class="frame"><img src="foto/karisik-izgara.jpg" alt="Karışık ızgara balık tabağı" loading="lazy"></div>
+        <div class="label">Karışık Izgara</div>
+      </div>
+      <div class="oval">
+        <div class="frame"><img src="foto/karides-guvec.jpg" alt="Taş güveçte karides" loading="lazy"></div>
+        <div class="label">Karides Güveç</div>
+      </div>
+      <div class="oval">
+        <div class="frame"><img src="foto/guvecte-sote.jpg" alt="Güveçte balık sote" loading="lazy"></div>
+        <div class="label">Güveçte Sote</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="lezzetler">
   <div class="wrap">
     <div class="head">
       <h2>Favori Lezzetler</h2>
@@ -328,7 +347,7 @@
   </div>
 </section>
 
-<section class="alt" id="galeri">
+<section id="galeri">
   <div class="wrap">
     <div class="head">
       <h2>Sofradan</h2>
