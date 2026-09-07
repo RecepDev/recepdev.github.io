@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recep Dursun — Web Tasarım</title>
+<meta name="description" content="İşletmeler için web sitesi, Google görünürlüğü ve sosyal medya paylaşım otomasyonu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --page: #ffffff;
+    --panel: #f6f9fd;
+    --ink: #1e2a42;
+    --ink-soft: #63718c;
+    --line: #e2e9f4;
+    --blue: #3f6ad1;
+    --navy: #24428f;
+    --cyan: #62cdf2;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--page); color: var(--ink);
+    font-family: Quicksand, system-ui, "Segoe UI", sans-serif;
+    font-size: 17px; line-height: 1.65;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 22px; }
+
+  header {
+    background: linear-gradient(180deg, #5182db 0%, var(--blue) 60%, var(--navy) 100%);
+    color: #fff; padding: 64px 0 56px;
+  }
+  header h1 { margin: 0 0 10px; font-size: clamp(30px, 5.5vw, 46px); font-weight: 700; letter-spacing: -.01em; }
+  header p { margin: 0; max-width: 54ch; color: #dce9fb; font-size: clamp(16px, 2.2vw, 19px); }
+
+  section { padding: 52px 0; }
+  section.alt { background: var(--panel); border-block: 1px solid var(--line); }
+  h2 { font-size: 26px; font-weight: 600; margin: 0 0 8px; color: var(--navy); }
+  .lede { margin: 0 0 26px; color: var(--ink-soft); }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .card { background: var(--page); border: 1px solid var(--line); border-top: 4px solid var(--cyan); padding: 20px; }
+  .card h3 { margin: 0 0 6px; font-size: 18px; font-weight: 700; }
+  .card p { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
+
+  .work { display: grid; gap: 14px; }
+  .work a {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+    border: 1px solid var(--line); background: var(--page); padding: 18px 20px; text-decoration: none;
+    transition: border-color .15s, transform .12s;
+  }
+  .work a:hover { border-color: var(--blue); transform: translateY(-1px); }
+  .work .name { font-weight: 700; font-size: 18px; }
+  .work .meta { color: var(--ink-soft); font-size: 14.5px; }
+  .tag {
+    font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700;
+    color: var(--blue); border: 1px solid var(--blue); border-radius: 999px; padding: 3px 10px;
+  }
+
+  footer { padding: 34px 0 46px; color: var(--ink-soft); font-size: 15px; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Recep Dursun</h1>
+    <p>Küçük işletmeler için web sitesi, Google Haritalar görünürlüğü ve sosyal medya paylaşım otomasyonu.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Ne yapıyorum</h2>
+    <p class="lede">Amaç güzel bir sayfa değil; arayan müşterinin sizi rakipten önce bulması.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Web sitesi</h3>
+        <p>Menü, fotoğraf, yol tarifi ve WhatsApp rezervasyonu olan tek sayfalık site. Telefonda hızlı açılır.</p>
+      </div>
+      <div class="card">
+        <h3>Google görünürlüğü</h3>
+        <p>Google İşletme Profili düzenlemesi, fotoğraf ve menü yüklemesi, yorum yönetimi.</p>
+      </div>
+      <div class="card">
+        <h3>Sosyal medya otomasyonu</h3>
+        <p>Instagram, TikTok, Telegram ve X'e zamanlanmış paylaşım; gelen mesajlara otomatik cevap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Örnek çalışmalar</h2>
+    <p class="lede">Aşağıdaki sayfalar müşteriye sunum için hazırlanmış örneklerdir.</p>
+    <div class="work">
+      <a href="tuzla/">
+        <span>
+          <span class="name">Tuzla Balık Evi</span><br>
+          <span class="meta">Restoran · menü, kurumsal öğle yemeği, WhatsApp rezervasyon</span>
+        </span>
+        <span class="tag">Demo</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Örnek çalışmalar ilgili işletmeler tarafından yayımlanmamıştır; sunum amacıyla hazırlanmıştır.
+  </div>
+</footer>
+
+</body>
+</html>

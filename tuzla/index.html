@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tuzla Balık Evi</title>
+<meta name="description" content="Tuzla Balık Evi — günün balığı, mangal, alkolsüz servis. Postane Mah. Cumhuriyet Cd. No:23, Tuzla / İstanbul.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Tuzla Balık Evi">
+<meta property="og:description" content="Günün balığı, mangalda. WhatsApp'tan rezervasyon.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Quicksand:wght@400;500;600;700&display=swap">
+
+<style>
+  :root {
+    /* Acik tema uzerine kurulu tek gorunum: zemin beyaz, maviler bir ton acik */
+    --navy: #24428f;
+    --navy-deep: #1b3573;
+    --blue: #3f6ad1;
+    --blue-soft: #eaf1fd;
+    --cyan: #62cdf2;
+    --cyan-soft: #d3eefb;
+    --page: #ffffff;
+    --panel: #f7fafe;
+    --ink: #1e2a42;
+    --ink-soft: #63718c;
+    --line: #e0e8f4;
+    --white: #ffffff;
+  /* ---- WhatsApp rezervasyon: menüde, kapakta ve sağ alt köşede ---- */
+  --wa: #25d366;
+  --wa-dark: #1da851;
+}
+
+  .wa-btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: var(--wa); color: #fff; font-weight: 700; font-size: 14.5px;
+    padding: 10px 18px; border-radius: 999px; white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, .35);
+    transition: background .15s, transform .12s;
+  }
+  .wa-btn:hover { background: var(--wa-dark); transform: translateY(-1px); }
+  .wa-btn:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+  .wa-btn svg { width: 19px; height: 19px; fill: currentColor; flex: none; }
+
+  .hero .wa-btn { font-size: 17px; padding: 15px 30px; margin-bottom: 34px; }
+  .hero .wa-btn svg { width: 22px; height: 22px; }
+
+  /* sağ alt köşede sabit baloncuk (masaüstü) */
+  .wa-float {
+    position: fixed; right: 20px; bottom: 22px; z-index: 40;
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--wa); color: #fff; font-weight: 700; font-size: 15px;
+    padding: 13px 20px; border-radius: 999px;
+    box-shadow: 0 8px 22px rgba(6, 40, 20, .3);
+    transition: background .15s, transform .12s;
+  }
+  .wa-float:hover { background: var(--wa-dark); transform: translateY(-2px); }
+  .wa-float svg { width: 22px; height: 22px; fill: currentColor; }
+  @media (max-width: 779px) { .wa-float { display: none; } }
+  @media (max-width: 900px) { header.nav .wa-btn { display: none; } }
+
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--page); color: var(--ink);
+    font-family: Quicksand, system-ui, "Segoe UI", sans-serif;
+    font-size: 16.5px; line-height: 1.65;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---- demo şeridi ---- */
+  .demo-bar {
+    background: #c2410c; color: #fff; text-align: center;
+    font-size: 12.5px; padding: 7px 16px; letter-spacing: .02em;
+  }
+
+  /* ---- üst bilgi çubuğu ---- */
+  .topbar { background: var(--navy); color: #dbe8fb; font-size: 14px; }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 9px; flex-wrap: wrap; }
+  .socials { display: flex; gap: 14px; }
+  .socials a { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; transition: background .15s; }
+  .socials a:hover { background: rgba(255,255,255,.14); }
+  .socials svg { width: 15px; height: 15px; fill: #cfe0f5; }
+  .topbar .phone { font-weight: 600; }
+  .topbar .phone span { color: var(--cyan); }
+
+  /* ---- menü ---- */
+  header.nav { background: var(--page); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 20; }
+  header.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px 20px; padding-block: 12px; flex-wrap: wrap; }
+  @media (max-width: 720px) {
+    header.nav .wrap { justify-content: center; text-align: center; }
+    nav.menu { justify-content: center; width: 100%; }
+  }
+  .logo { display: flex; align-items: center; gap: 12px; flex: none; }
+  .logo .text { display: grid; gap: 2px; line-height: 1; }
+  .logo svg { width: 40px; height: 40px; }
+  .logo .name { font-family: "Baloo 2", cursive; font-size: 27px; font-weight: 800; color: var(--navy); line-height: 1.05; display: block; }
+  .logo .sub { font-size: 10.5px; letter-spacing: .22em; display: block; color: var(--ink-soft); text-transform: uppercase; }
+  nav.menu { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+  nav.menu a {
+    font-size: 13.5px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600;
+    color: var(--ink-soft); padding: 9px 12px; border-bottom: 3px solid transparent; white-space: nowrap;
+  }
+  nav.menu a:hover { color: var(--blue); }
+  nav.menu a.active { color: var(--blue); border-bottom-color: var(--cyan); }
+
+  /* ---- kapak ---- */
+  .hero {
+    background:
+      radial-gradient(120% 120% at 50% -25%, #6d97e8 0%, transparent 58%),
+      linear-gradient(180deg, #5182db 0%, var(--blue) 55%, var(--navy) 100%);
+    padding: 44px 0 0; text-align: center; overflow: hidden;
+  }
+  .hero h1 {
+    margin: 0 0 6px; font-family: "Baloo 2", cursive; font-style: italic; font-weight: 800;
+    font-size: clamp(38px, 8vw, 84px); line-height: 1.04; overflow-wrap: break-word; color: var(--cyan);
+    -webkit-text-stroke: 2px #fff; paint-order: stroke fill;
+    text-shadow: 0 6px 0 rgba(10, 20, 54, .35);
+  }
+  .hero .slogan {
+    font-family: "Baloo 2", cursive; font-style: italic; font-weight: 600;
+    font-size: clamp(18px, 3vw, 28px); color: #fff; margin: 0 0 14px;
+    text-shadow: 0 2px 0 rgba(10, 20, 54, .25);
+  }
+  .hero .sub { color: #d7e6fa; font-size: clamp(15px, 2.2vw, 19px); margin: 0 auto 34px; max-width: 52ch; }
+
+  /* oval fotoğraf çerçeveleri */
+  .ovals { display: flex; flex-wrap: wrap; justify-content: center; gap: 26px; padding-bottom: 40px; }
+  .oval { width: min(280px, 78vw); }
+  .oval .label {
+    font-family: "Baloo 2", cursive; font-style: italic; font-weight: 800; font-size: 27px;
+    color: var(--cyan); -webkit-text-stroke: 1.5px #fff; paint-order: stroke fill; margin-bottom: 10px;
+  }
+  .oval .frame {
+    aspect-ratio: 1 / .86; border-radius: 50%; border: 5px solid #fff;
+    background: linear-gradient(150deg, rgba(98,205,242,.45), rgba(63,106,209,.5));
+    display: grid; place-content: center; gap: 4px; text-align: center; padding: 24px;
+    box-shadow: 0 10px 26px rgba(6, 16, 45, .35);
+  }
+  .frame .slot { font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: #cdeaf9; font-weight: 700; }
+  .frame .what { color: #fff; font-size: 15px; font-weight: 500; }
+
+  /* ---- üçlü bilgi kutuları ---- */
+  .infos { background: var(--navy); }
+  .infos .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px; padding: 0 20px; }
+  .info { background: rgba(255,255,255,.07); padding: 20px 18px; text-align: center; transition: background .15s; }
+  .info:hover { background: rgba(255,255,255,.13); }
+  .info h3 { margin: 0 0 4px; font-family: Quicksand, sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #fff; }
+  .info p { margin: 0; font-size: 14px; color: #b9cdeb; }
+
+  /* ---- bölümler ---- */
+  section { padding: 62px 0; }
+  section.alt { background: var(--panel); }
+  .head { text-align: center; margin-bottom: 38px; }
+  .head h2 {
+    margin: 0 0 6px; font-family: Quicksand, sans-serif; font-weight: 500;
+    font-size: clamp(28px, 4.4vw, 42px); color: var(--blue); letter-spacing: .01em;
+  }
+  .head p { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
+
+  /* favori lezzet kartları */
+  .dishes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+  .dish-card { border: 1px solid var(--line); background: var(--page); overflow: hidden; }
+  .dish-card .photo {
+    aspect-ratio: 4 / 3.2;
+    background: linear-gradient(145deg, var(--cyan-soft), var(--blue-soft));
+    display: grid; place-content: center; gap: 5px; text-align: center; padding: 20px;
+  }
+  .dish-card .photo .slot { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(--blue); }
+  .dish-card .photo .hint { font-size: 14px; color: var(--ink-soft); }
+  .dish-card .caption { background: var(--blue); color: #fff; padding: 13px 16px; font-size: 17px; font-weight: 600; }
+
+  /* menü listesi */
+  .menu-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 34px 50px; }
+  .menu-cols h3 { margin: 0 0 12px; font-size: 19px; color: var(--blue); font-weight: 700; }
+  .row { display: flex; align-items: baseline; gap: 8px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+  .row:last-child { border-bottom: 0; }
+  .row .fill { flex: 1; }
+  .row .val { font-size: 13.5px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+  /* kurumsal */
+  .corp { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .corp .box { background: var(--page); border: 1px solid var(--line); border-top: 4px solid var(--cyan); padding: 22px; }
+  .corp h3 { margin: 0 0 6px; font-size: 17.5px; font-weight: 700; }
+  .corp p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+
+  /* iletişim */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+  .contact-grid dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; margin-top: 16px; }
+  .contact-grid dt:first-child { margin-top: 0; }
+  .contact-grid dd { margin: 3px 0 0; font-size: 17px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 13px 24px; font-weight: 700; font-size: 15.5px; border-radius: 3px;
+    border: 2px solid transparent; transition: transform .12s, background .12s;
+  }
+  .btn:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; }
+  .btn-cyan { background: var(--cyan); color: #0d2340; }
+  .btn-cyan:hover { transform: translateY(-1px); background: #6bcff2; }
+  .btn-navy { background: var(--blue); color: #fff; }
+  .btn-navy:hover { transform: translateY(-1px); }
+  .btn-out { border-color: var(--blue); color: var(--blue); }
+  .btn-out:hover { background: var(--panel); }
+
+  footer { background: var(--navy); color: #cbdcf5; padding: 40px 0; }
+  footer .wrap { display: grid; gap: 14px; }
+  footer strong { color: #fff; }
+  .demo-note { font-size: 13px; line-height: 1.55; color: #a8bfe2; border-top: 1px solid rgba(255,255,255,.14); padding-top: 16px; }
+
+  .stickybar {
+    position: sticky; bottom: 0; z-index: 25; display: flex; gap: 10px;
+    padding: 10px 14px; background: var(--page); border-top: 1px solid var(--line);
+  }
+  .stickybar .btn { flex: 1; padding: 12px; }
+  @media (min-width: 780px) { .stickybar { display: none; } }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="demo-bar">ÖRNEK TASARIM — Tuzla Balık Evi için hazırlanmış demo sayfadır, resmî site değildir.</div>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="socials">
+      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.4V14h2.7v8h3.4z"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.6 7.2s-.2-1.4-.8-2c-.7-.8-1.5-.8-1.9-.9C16.2 4.1 12 4.1 12 4.1s-4.2 0-6.9.2c-.4 0-1.2.1-1.9.9-.6.6-.8 2-.8 2S2.2 8.8 2.2 10.5v1.6c0 1.6.2 3.3.2 3.3s.2 1.4.8 2c.7.8 1.7.7 2.1.8 1.5.2 6.7.2 6.7.2s4.2 0 6.9-.2c.4-.1 1.2-.1 1.9-.9.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.6c0-1.6-.2-3.2-.2-3.2zM10.1 14.4V8.9l5.4 2.8-5.4 2.7z"/></svg></a>
+      <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M17.5 3h3l-6.6 7.6L21.8 21h-5.9l-4.6-6-5.3 6H3l7.1-8.1L2.6 3h6l4.2 5.5L17.5 3zm-1 16h1.7L8.6 4.7H6.8L16.5 19z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.2A6.6 6.6 0 1 0 18.6 12 6.6 6.6 0 0 0 12 5.4zm0 10.9A4.3 4.3 0 1 1 16.3 12 4.3 4.3 0 0 1 12 16.3zm6.9-11.1a1.5 1.5 0 1 1-1.5-1.5 1.5 1.5 0 0 1 1.5 1.5z"/></svg></a>
+    </div>
+    <div class="phone">İletişim: <span>0216 447 25 48</span></div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M6 24c6-9 15-13 22-13 6 0 10 3 12 6-2 3-6 7-12 7-7 0-16-4-22 0z" fill="#3f6ad1"/>
+        <path d="M28 17c7 0 11 3 12 7-2 3-6 6-12 6-3 0-6-1-8-2 4-3 8-7 8-11z" fill="#62cdf2"/>
+        <circle cx="33" cy="20" r="1.7" fill="#fff"/>
+        <path d="M6 24c3-2 6-2 9-2-2 3-3 6-3 9-3-2-5-4-6-7z" fill="#24428f"/>
+      </svg>
+      <span class="text">
+        <span class="name">Tuzla Balık Evi</span>
+        <span class="sub">Postane Mah. · Tuzla</span>
+      </span>
+    </a>
+    <nav class="menu">
+      <a class="active" href="#">Ana Sayfa</a>
+      <a href="#lezzetler">Lezzetler</a>
+      <a href="#menu">Menü</a>
+      <a href="#kurumsal">Kurumsal</a>
+      <a href="#iletisim">İletişim</a>
+      <a class="wa-btn" href="https://wa.me/902164472548?text=Merhaba%2C%20rezervasyon%20yapmak%20istiyorum." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4C8.7 21.5 10.3 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6S20.4 7.4 20.4 12 16.6 20.2 12 20.2z"/></svg>WhatsApp'tan Rezervasyon</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Tuzla Balık Evi</h1>
+    <p class="slogan">Tuzla'nın balık sofrası</p>
+    <p class="sub">Sabah tezgâhtan gelen günün balığı, mangalda pişer. Alkolsüz servis, aile sofrası, her gün 09.00 – 23.00.</p>
+    <a class="wa-btn" href="https://wa.me/902164472548?text=Merhaba%2C%20rezervasyon%20yapmak%20istiyorum." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4C8.7 21.5 10.3 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6S20.4 7.4 20.4 12 16.6 20.2 12 20.2z"/></svg>WhatsApp'tan Rezervasyon</a>
+  </div>
+  <div class="wrap">
+    <div class="ovals">
+      <div class="oval">
+        <div class="label">Tezgâh</div>
+        <div class="frame"><span class="slot">Fotoğraf 01</span><span class="what">Günün balığı, buz üstünde</span></div>
+      </div>
+      <div class="oval">
+        <div class="label">Mangal</div>
+        <div class="frame"><span class="slot">Fotoğraf 02</span><span class="what">Izgara başında ustamız</span></div>
+      </div>
+      <div class="oval">
+        <div class="label">Salon</div>
+        <div class="frame"><span class="slot">Fotoğraf 03</span><span class="what">Salon ve deniz manzarası</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="infos">
+  <div class="wrap">
+    <a class="info" href="#iletisim">
+      <h3>Nasıl gelirim?</h3>
+      <p>Adresi ve yol tarifini görmek için tıklayın.</p>
+    </a>
+    <a class="info" href="#lezzetler">
+      <h3>Öne çıkan lezzetler neler?</h3>
+      <p>En çok tercih edilen tabakları görün.</p>
+    </a>
+    <a class="info" href="https://wa.me/902164472548?text=Merhaba%2C%20rezervasyon%20yapmak%20istiyorum." target="_blank" rel="noopener">
+      <h3>Rezervasyon gerekiyor mu?</h3>
+      <p>Rezervasyonsuz gelinebilir. Yazmak için tıklayın.</p>
+    </a>
+  </div>
+</div>
+
+<section id="lezzetler">
+  <div class="wrap">
+    <div class="head">
+      <h2>Favori Lezzetler</h2>
+      <p>Tuzla Balık Evi'nin en sevilen tabaklarını denediniz mi?</p>
+    </div>
+    <div class="dishes">
+      <div class="dish-card">
+        <div class="photo"><span class="slot">Fotoğraf alanı</span><span class="hint">Tabak fotoğrafı, üstten çekim</span></div>
+        <div class="caption">Karadeniz Somonu Izgara</div>
+      </div>
+      <div class="dish-card">
+        <div class="photo"><span class="slot">Fotoğraf alanı</span><span class="hint">Tabak fotoğrafı, üstten çekim</span></div>
+        <div class="caption">Kalamar Sote</div>
+      </div>
+      <div class="dish-card">
+        <div class="photo"><span class="slot">Fotoğraf alanı</span><span class="hint">Tabak fotoğrafı, üstten çekim</span></div>
+        <div class="caption">Levrek Marine</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="menu">
+  <div class="wrap">
+    <div class="head">
+      <h2>Menü</h2>
+      <p>Örnek yerleşim — gerçek kalemler ve fiyatlar işletmeden alınıp buraya girilecek.</p>
+    </div>
+    <div class="menu-cols">
+      <div>
+        <h3>Mezeler</h3>
+        <div class="row"><span>Rezene sotesi</span><span class="fill"></span><span class="val">fiyat</span></div>
+        <div class="row"><span>Deniz börülcesi</span><span class="fill"></span><span class="val">fiyat</span></div>
+        <div class="row"><span>Levrek marine</span><span class="fill"></span><span class="val">fiyat</span></div>
+        <div class="row"><span>Haydari · acılı ezme</span><span class="fill"></span><span class="val">fiyat</span></div>
+      </div>
+      <div>
+        <h3>Izgara</h3>
+        <div class="row"><span>Karadeniz somonu</span><span class="fill"></span><span class="val">fiyat</span></div>
+        <div class="row"><span>Çupra</span><span class="fill"></span><span class="val">fiyat</span></div>
+        <div class="row"><span>Levrek</span><span class="fill"></span><span class="val">fiyat</span></div>
+        <div class="row"><span>Günün balığı</span><span class="fill"></span><span class="val">günlük</span></div>
+      </div>
+      <div>
+        <h3>Tava &amp; kızartma</h3>
+        <div class="row"><span>Hamsi tava</span><span class="fill"></span><span class="val">fiyat</span></div>
+        <div class="row"><span>Kalamar</span><span class="fill"></span><span class="val">fiyat</span></div>
+        <div class="row"><span>Karides güveç</span><span class="fill"></span><span class="val">fiyat</span></div>
+        <div class="row"><span>Balık ekmek</span><span class="fill"></span><span class="val">fiyat</span></div>
+      </div>
+      <div>
+        <h3>Tatlı &amp; içecek</h3>
+        <div class="row"><span>İrmik helvası</span><span class="fill"></span><span class="val">fiyat</span></div>
+        <div class="row"><span>Sütlaç</span><span class="fill"></span><span class="val">fiyat</span></div>
+        <div class="row"><span>Çay · Türk kahvesi</span><span class="fill"></span><span class="val">fiyat</span></div>
+        <div class="row"><span>Ayran · şalgam</span><span class="fill"></span><span class="val">fiyat</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kurumsal">
+  <div class="wrap">
+    <div class="head">
+      <h2>Kurumsal Öğle Yemeği</h2>
+      <p>Tersane ve sanayi bölgesine yakınız; alkolsüz servis kurumsal misafir ağırlamaya uygundur.</p>
+    </div>
+    <div class="corp">
+      <div class="box">
+        <h3>Sabit öğle menüsü</h3>
+        <p>Çorba, ana balık, salata ve tatlı. Kişi başı fiyat, faturalı.</p>
+      </div>
+      <div class="box">
+        <h3>Toplu rezervasyon</h3>
+        <p>15 kişi ve üzeri gruplara masa ayırma, önceden menü seçimi.</p>
+      </div>
+      <div class="box">
+        <h3>Ofise paket servis</h3>
+        <p>Öğle saatinde çevre firmalara teslim, tek kalem fatura.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="iletisim">
+  <div class="wrap">
+    <div class="head">
+      <h2>İletişim</h2>
+      <p>Masa ayırtmak veya paket sipariş için yazın, dönüş yapalım.</p>
+    </div>
+    <div class="contact-grid">
+      <dl>
+        <dt>Telefon</dt><dd><a href="tel:+902164472548">0216 447 25 48</a></dd>
+        <dt>Adres</dt><dd>Postane Mah. Cumhuriyet Cd. No:23<br>34940 Tuzla / İstanbul</dd>
+      </dl>
+      <dl>
+        <dt>Çalışma saatleri</dt><dd>Pazartesi – Pazar · 09.00 – 23.00</dd>
+        <dt>Servis</dt><dd>Salon · paket servis · kurumsal öğle yemeği</dd>
+      </dl>
+    </div>
+    <div class="btns">
+      <a class="btn btn-cyan" href="https://wa.me/902164472548?text=Merhaba%2C%20rezervasyon%20yapmak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan rezervasyon</a>
+      <a class="btn btn-navy" href="tel:+902164472548">Hemen ara</a>
+      <a class="btn btn-out" href="https://maps.google.com/?q=Tuzla+Bal%C4%B1k+Evi+Cumhuriyet+Caddesi+Tuzla" target="_blank" rel="noopener">Yol tarifi</a>
+    </div>
+  </div>
+</section>
+
+<a class="wa-float" href="https://wa.me/902164472548?text=Merhaba%2C%20rezervasyon%20yapmak%20istiyorum." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4C8.7 21.5 10.3 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6S20.4 7.4 20.4 12 16.6 20.2 12 20.2z"/></svg>Rezervasyon</a>
+
+<div class="stickybar">
+  <a class="btn btn-cyan" href="https://wa.me/902164472548?text=Merhaba%2C%20rezervasyon%20yapmak%20istiyorum." target="_blank" rel="noopener">WhatsApp</a>
+  <a class="btn btn-navy" href="tel:+902164472548">Ara</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Tuzla Balık Evi</strong> · Postane Mah. Cumhuriyet Cd. No:23, Tuzla / İstanbul · 0216 447 25 48 · Her gün 09.00 – 23.00</p>
+    <p class="demo-note">
+      Bu sayfa <strong>örnek (demo) çalışmadır</strong>; Tuzla Balık Evi tarafından yayımlanmamıştır, resmî web sitesi değildir.
+      Fotoğraf alanları ve menü kalemleri yerleşimi göstermek içindir, fiyat bilgisi içermez.
+      Telefon, adres ve çalışma saati bilgisi herkese açık kaynaklardan alınmıştır.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
